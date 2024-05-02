@@ -1,13 +1,16 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
-from datetime import datetime
+from datetime import datetime, timedelta
 
 with DAG(dag_id='check_dag',
         start_date=datetime(2023, 1, 1), 
         description='DAG to check data', 
         tags=['data_engineering'], 
-        schedule='@daily', 
+        # every 5 minutes
+        schedule='0/5 * * * *', 
+        # every 3 days
+        #schedule_interval=timedelta(days=3),
         catchup=False):
     
     create_file = BashOperator(
@@ -26,3 +29,7 @@ with DAG(dag_id='check_dag',
     )
 
     create_file >> check_file_exists >> read_file
+
+
+
+
