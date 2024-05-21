@@ -6,7 +6,7 @@ from datetime import datetime
      tags=['data_science'], 
      schedule='@daily', 
      catchup=False)
-def my_dag_taskflow_api():
+def my_first_dag_taskflow_api():
     
     @task
     def print_a():
@@ -14,4 +14,4 @@ def my_dag_taskflow_api():
 
     print_a()
 
-my_dag_taskflow_api()
+my_first_dag_taskflow_api()
