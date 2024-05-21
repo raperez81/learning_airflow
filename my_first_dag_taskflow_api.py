@@ -9,9 +9,9 @@ from datetime import datetime
 def my_first_dag_taskflow_api():
     
     @task
-    def print_a():
-        print('hi from task a')
+    def print_a(name):
+        print(f"hi {name} from task a")
 
-    print_a()
+    print_a("Ricardo")
 
 my_first_dag_taskflow_api()
